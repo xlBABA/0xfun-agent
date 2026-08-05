@@ -1,4 +1,4 @@
-# pi CTF Agent
+# 0xfun Agent
 
 A Capture-The-Flag agent configuration for [pi](https://github.com/earendil-works/pi-coding-agent),
 the terminal coding agent. Drop this into your pi agent directory and pi becomes an
@@ -21,10 +21,10 @@ until it prints the flag.
 npm install -g @earendil-works/pi-coding-agent
 
 # 2. clone this repo (with the skills submodule) into pi's agent directory
-git clone --recurse-submodules https://github.com/xlBABA/pi-ctf-agent.git /tmp/pi-ctf-agent
-cp /tmp/pi-ctf-agent/AGENTS.md ~/.pi/agent/AGENTS.md
+git clone --recurse-submodules https://github.com/xlBABA/0xfun-agent.git /tmp/0xfun-agent
+cp /tmp/0xfun-agent/AGENTS.md ~/.pi/agent/AGENTS.md
 mkdir -p ~/.pi/agent/skills
-cp -r /tmp/pi-ctf-agent/skills/ctf-skills ~/.pi/agent/skills/
+cp -r /tmp/0xfun-agent/skills/ctf-skills ~/.pi/agent/skills/
 
 # 3. configure your model provider (pick one)
 #    https://github.com/earendil-works/pi-coding-agent#setup
