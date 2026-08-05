@@ -1,0 +1,3 @@
+[submodule "skills/ctf-skills"]
+	path = skills/ctf-skills
+	url = https://github.com/ljagiello/ctf-skills.git

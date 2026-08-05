@@ -1,0 +1,9 @@
+# Never publish pi private state
+auth.json
+models-store.json
+settings.json
+sessions/
+npm/
+bin/
+*.log
+.DS_Store
