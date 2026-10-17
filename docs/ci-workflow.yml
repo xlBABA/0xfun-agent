@@ -1,0 +1,39 @@
+name: installation-and-runtime
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node: ['22.19.0', '24.11.1']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          cache-dependency-path: npm-shrinkwrap.json
+      - name: Install pinned dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Build branded runtime
+        run: npm run build
+      - name: Unit and isolated runtime tests (no real credentials)
+        run: npm test
+      - name: Verify distribution resources and privacy boundaries
+        run: npm run check
+      - name: Install and exercise the real command shim
+        run: npm run test:install
+      - name: Check package contents
+        run: npm pack --dry-run --ignore-scripts

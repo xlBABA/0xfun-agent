@@ -1,0 +1,101 @@
+{
+  "name": "0xfun",
+  "version": "1.1.0",
+  "description": "A CTF-focused terminal agent with specialist skills, web research, and multi-agent workflows.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xlBABA/0xfun-agent.git"
+  },
+  "homepage": "https://github.com/xlBABA/0xfun-agent#readme",
+  "bugs": {
+    "url": "https://github.com/xlBABA/0xfun-agent/issues"
+  },
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "0xfun": "bin/0xfun.mjs"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "packageManager": "npm@11.6.2",
+  "files": [
+    "bin/",
+    "lib/",
+    "scripts/",
+    "docs/",
+    "profile/",
+    "licenses/",
+    "AGENTS.md",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    ".runtime/",
+    "npm-shrinkwrap.json"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "setup": "node scripts/setup.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:install": "node scripts/install-smoke.mjs",
+    "check": "node scripts/check-release.mjs",
+    "prepack": "npm run build && npm run check"
+  },
+  "pi": {
+    "extensions": [
+      "./profile/extensions/0xfun-identity.ts",
+      "./profile/extensions/0xfun-banner.ts",
+      "./profile/extensions/0xfun-piolium.ts",
+      "./node_modules/pi-subagents/index.ts",
+      "./node_modules/pi-web-access/index.ts"
+    ],
+    "skills": [
+      "./profile/skills",
+      "./node_modules/pi-subagents/skills",
+      "./node_modules/@vigolium/piolium/skills"
+    ],
+    "prompts": [
+      "./node_modules/pi-subagents/prompts",
+      "./node_modules/@vigolium/piolium/prompts"
+    ],
+    "themes": [
+      "./profile/themes",
+      "./node_modules/@vigolium/piolium/themes"
+    ]
+  },
+  "dependencies": {
+    "@earendil-works/pi-agent-core": "0.82.1",
+    "@earendil-works/pi-ai": "0.82.1",
+    "@earendil-works/pi-coding-agent": "0.82.1",
+    "@earendil-works/pi-tui": "0.82.1",
+    "@vigolium/piolium": "0.0.13",
+    "pi-subagents": "0.37.2",
+    "pi-web-access": "0.18.0",
+    "typebox": "1.1.38",
+    "@silvia-odwyer/photon-node": "0.3.4",
+    "chalk": "5.6.2",
+    "cross-spawn": "7.0.6",
+    "diff": "8.0.4",
+    "glob": "13.0.6",
+    "highlight.js": "10.7.3",
+    "hosted-git-info": "9.0.3",
+    "ignore": "7.0.5",
+    "jiti": "2.7.0",
+    "minimatch": "10.2.5",
+    "proper-lockfile": "4.1.2",
+    "semver": "7.8.0",
+    "undici": "8.5.0",
+    "yaml": "2.9.0"
+  },
+  "optionalDependencies": {
+    "@mariozechner/clipboard": "0.3.9"
+  },
+  "overrides": {
+    "@earendil-works/pi-agent-core": "$@earendil-works/pi-agent-core",
+    "@earendil-works/pi-ai": "$@earendil-works/pi-ai",
+    "@earendil-works/pi-coding-agent": "$@earendil-works/pi-coding-agent",
+    "@earendil-works/pi-tui": "$@earendil-works/pi-tui",
+    "typebox": "$typebox"
+  }
+}
